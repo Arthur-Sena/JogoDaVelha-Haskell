@@ -46,12 +46,12 @@ getBinDir, getLibDir, getDynLibDir, getDataDir, getLibexecDir, getSysconfDir :: 
 
 
 bindir, libdir, dynlibdir, datadir, libexecdir, sysconfdir :: FilePath
-bindir     = "C:\\Users\\arthu\\OneDrive\\Documentos\\Dev\\Haskel\\Projeto1\\primeiro-projeto\\.stack-work\\install\\28212742\\bin"
-libdir     = "C:\\Users\\arthu\\OneDrive\\Documentos\\Dev\\Haskel\\Projeto1\\primeiro-projeto\\.stack-work\\install\\28212742\\lib\\x86_64-windows-ghc-9.6.6\\primeiro-projeto-0.1.0.0-BkHbF50gFixLf4ZzXHZZwG-primeiro-projeto"
-dynlibdir  = "C:\\Users\\arthu\\OneDrive\\Documentos\\Dev\\Haskel\\Projeto1\\primeiro-projeto\\.stack-work\\install\\28212742\\lib\\x86_64-windows-ghc-9.6.6"
-datadir    = "C:\\Users\\arthu\\OneDrive\\Documentos\\Dev\\Haskel\\Projeto1\\primeiro-projeto\\.stack-work\\install\\28212742\\share\\x86_64-windows-ghc-9.6.6\\primeiro-projeto-0.1.0.0"
-libexecdir = "C:\\Users\\arthu\\OneDrive\\Documentos\\Dev\\Haskel\\Projeto1\\primeiro-projeto\\.stack-work\\install\\28212742\\libexec\\x86_64-windows-ghc-9.6.6\\primeiro-projeto-0.1.0.0"
-sysconfdir = "C:\\Users\\arthu\\OneDrive\\Documentos\\Dev\\Haskel\\Projeto1\\primeiro-projeto\\.stack-work\\install\\28212742\\etc"
+bindir     = "C:\\Users\\arthu\\OneDrive\\Documentos\\Dev\\Haskel\\Haskell\\Projeto1\\JogoDaVelha-Haskell\\primeiro-projeto\\.stack-work\\install\\28212742\\bin"
+libdir     = "C:\\Users\\arthu\\OneDrive\\Documentos\\Dev\\Haskel\\Haskell\\Projeto1\\JogoDaVelha-Haskell\\primeiro-projeto\\.stack-work\\install\\28212742\\lib\\x86_64-windows-ghc-9.6.6\\primeiro-projeto-0.1.0.0-BkHbF50gFixLf4ZzXHZZwG-primeiro-projeto"
+dynlibdir  = "C:\\Users\\arthu\\OneDrive\\Documentos\\Dev\\Haskel\\Haskell\\Projeto1\\JogoDaVelha-Haskell\\primeiro-projeto\\.stack-work\\install\\28212742\\lib\\x86_64-windows-ghc-9.6.6"
+datadir    = "C:\\Users\\arthu\\OneDrive\\Documentos\\Dev\\Haskel\\Haskell\\Projeto1\\JogoDaVelha-Haskell\\primeiro-projeto\\.stack-work\\install\\28212742\\share\\x86_64-windows-ghc-9.6.6\\primeiro-projeto-0.1.0.0"
+libexecdir = "C:\\Users\\arthu\\OneDrive\\Documentos\\Dev\\Haskel\\Haskell\\Projeto1\\JogoDaVelha-Haskell\\primeiro-projeto\\.stack-work\\install\\28212742\\libexec\\x86_64-windows-ghc-9.6.6\\primeiro-projeto-0.1.0.0"
+sysconfdir = "C:\\Users\\arthu\\OneDrive\\Documentos\\Dev\\Haskel\\Haskell\\Projeto1\\JogoDaVelha-Haskell\\primeiro-projeto\\.stack-work\\install\\28212742\\etc"
 
 getBinDir     = catchIO (getEnv "primeiro_projeto_bindir")     (\_ -> return bindir)
 getLibDir     = catchIO (getEnv "primeiro_projeto_libdir")     (\_ -> return libdir)
