@@ -2,6 +2,7 @@ module Main where
 
 import System.Random (randomRIO)
 import Data.Char (toUpper)
+import Data.List (transpose)
 
 -- Definição do tipo de tabuleiro e constantes
 type Tabuleiro = [[Char]]
