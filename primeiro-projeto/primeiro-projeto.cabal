@@ -30,3 +30,6 @@ executable primeiro-projeto
                        -Wpartial-fields
                        -Wredundant-constraints
                        -rtsopts -Wall -threaded -O2
+  other-modules:       Tipos
+                     , Resultados
+                     , Jogada
