@@ -19,7 +19,7 @@ executable primeiro-projeto
   hs-source-dirs:      src
   main-is:             Main.hs
   default-language:    Haskell2010
-  build-depends:       base >= 4.7 && < 5, random, mtl
+  build-depends:       base >= 4.7 && < 5
   ghc-options:         -Wall
                        -Wcompat
                        -Widentities

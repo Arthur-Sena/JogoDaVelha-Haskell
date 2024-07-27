@@ -1,6 +1,5 @@
 module Main where
 
-import System.Random (randomRIO)
 import Resultados
 import Tipos
 import Jogada

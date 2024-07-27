@@ -24,11 +24,16 @@ obterJogadaValida tabuleiro = do
     input <- getLine
     let [linhaStr, colunaStr] = words input
     let jogada = (read linhaStr, read colunaStr)
-    if posicaoDisponivel jogada tabuleiro
+    if dentroDosLimites jogada && posicaoDisponivel jogada tabuleiro
         then return jogada
         else do
-            putStrLn "Essa posição já está ocupada. Por favor, escolha outra."
+            putStrLn "Jogada inválida. Por favor, escolha uma posição vazia dentro dos limites do tabuleiro."
             obterJogadaValida tabuleiro
+
+-- Função para verificar se a jogada está dentro do tabuleiro (x e y entre 0 e 2)
+dentroDosLimites :: Coord -> Bool
+dentroDosLimites (linha, coluna) =
+    (linha >= 0 && linha < tamanhoTabuleiro) && (coluna >= 0 && coluna < tamanhoTabuleiro)
 
 -- Função para verificar se uma posição no tabuleiro está disponível (vazia)
 posicaoDisponivel :: Coord -> Tabuleiro -> Bool
@@ -46,4 +51,3 @@ fazJogada (linha, coluna) tabuleiro jogador
                              drop (linha + 1) tabuleiro
         in novoTabuleiro
     | otherwise = tabuleiro
-
