@@ -1,6 +1,7 @@
 module Jogada where
 
-import Tipos
+import Tipos ( Coord, Tabuleiro, vazio, tamanhoTabuleiro )
+import Data.List (intercalate)
 
 {-
     Manipulação e retorno de tabuleiro
@@ -11,7 +12,8 @@ tabuleiroInicial = replicate tamanhoTabuleiro (replicate tamanhoTabuleiro vazio)
 imprimeTabuleiro :: Tabuleiro -> IO ()
 imprimeTabuleiro tabuleiro = do
     putStrLn "Estado atual do tabuleiro:"
-    putStrLn $ unlines [unwords [ [c] | c <- linha] | linha <- tabuleiro]
+    putStrLn $ unlines (map (foldr (\c acc -> if null acc then [c] else c : " | " ++ acc) "") tabuleiro)
+    --putStrLn $ unlines [intercalate " | " [[c] | c <- linha] | linha <- tabuleiro]
 
 {-
     Funções para obter, validar, e passar jogada para o tabuleiro
