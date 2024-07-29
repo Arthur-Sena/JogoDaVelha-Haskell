@@ -20,4 +20,4 @@ ganhou tabuleiro jogador =
 
 -- Função para verificar se o jogo empatou
 empatou :: Tabuleiro -> Bool
-empatou tabuleiro = all ((/= vazio) . head) tabuleiro
+empatou = all (notElem vazio)
