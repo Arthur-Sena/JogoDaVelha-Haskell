@@ -24,7 +24,7 @@ obterJogadaValida :: Tabuleiro -> IO Coord
 obterJogadaValida tabuleiro = do
     putStrLn "Digite a linha (0-2) e a coluna (0-2) para sua jogada, separados por espaço:"
     input <- getLine
-    if not (validarEntrada input)
+    if validarEntrada input
         then do
             let [linhaStr, colunaStr] = words input
             let jogada = (read linhaStr, read colunaStr)
