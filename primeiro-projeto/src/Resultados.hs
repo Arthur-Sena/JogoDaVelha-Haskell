@@ -3,9 +3,9 @@ module Resultados where
 import Data.List (transpose)
 import Tipos
 
-{-
+{- -----------------------------------------------------------------------------\
     Módulo com verificação dos possíveis resultados do jogo (vitória ou empate)
--}
+\--------------------------------------------------------------------------------}
 
 -- Função para verificar se alguém ganhou
 ganhou :: Tabuleiro -> Char -> Bool
