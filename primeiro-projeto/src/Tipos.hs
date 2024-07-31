@@ -1,8 +1,8 @@
 module Tipos where
 
-{-
+{---------------------------------------\
     Definição de tipos e constantes
--}
+\---------------------------------------}
 
 type Tabuleiro = [[Char]]
 type Coord = (Int, Int)
