@@ -1,7 +1,7 @@
 module Resultados where
 
 import Data.List (transpose)
-import Tipos
+import Tipos ( vazio, Tabuleiro )
 
 {- -----------------------------------------------------------------------------\
     Módulo com verificação dos possíveis resultados do jogo (vitória ou empate)

@@ -1,7 +1,9 @@
 module Jogada where
 
-import Tipos ( Coord, Tabuleiro, vazio, tamanhoTabuleiro )
+import Tipos ( Coord, Tabuleiro, vazio, tamanhoTabuleiro, jogadorX, jogadorO )
 import Data.List (intercalate)
+import Resultados (ganhou)
+import System.Random (randomRIO)
 
 {- --------------------------------------\
     Manipulação e retorno de tabuleiro
@@ -34,6 +36,41 @@ obterJogadaValida tabuleiro = do
         else do
             putStrLn "Entrada inválida. Por favor, digite dois números entre 0 e 2 separados por um espaço."
             obterJogadaValida tabuleiro
+
+jogadaComputador :: Tabuleiro -> IO Coord
+jogadaComputador tabuleiro = do
+    let posicoesVazias = [(linha, coluna) | linha <- [0..2], coluna <- [0..2], tabuleiro !! linha !! coluna == vazio]
+    let n = length posicoesVazias
+    indice <- randomRIO (0, n - 1)
+    return $ posicoesVazias !! fromIntegral indice
+
+jogadaInteligenteComputador :: Tabuleiro -> Char -> IO Coord
+jogadaInteligenteComputador tabuleiro jogadorComputador = do
+    let possiveisJogadas = [(linha, coluna) | linha <- [0..2], coluna <- [0..2], tabuleiro !! linha !! coluna == vazio]
+        jogadaVitoria = headMay $ filter (ganhouSeFizer tabuleiro jogadorComputador) possiveisJogadas
+        jogadaBloqueio = headMay $ filter (ganhouSeFizer tabuleiro (if jogadorComputador == jogadorX then jogadorO else jogadorX)) possiveisJogadas
+        jogadaAleatoria = if null jogadaVitoria && null jogadaBloqueio
+                            then headMay possiveisJogadas
+                            else Nothing
+        headMay :: [a] -> Maybe a
+        headMay (x:_) = Just x
+        headMay [] = Nothing
+        randomJogada :: IO Coord
+        randomJogada = do
+            let n = length possiveisJogadas
+            if n == 0
+                then error "Sem jogadas válidas disponíveis"
+                else do
+                    indice <- randomRIO (0, n - 1)
+                    return $ possiveisJogadas !! fromIntegral indice
+    case jogadaVitoria of
+        Just jogada -> return jogada
+        Nothing -> case jogadaBloqueio of
+            Just jogada -> return jogada
+            Nothing -> case jogadaAleatoria of
+                Just jogada -> return jogada
+                Nothing -> randomJogada
+
 
 -- Função para "salvar" a jogada no tabuleiro
 -- ***
@@ -72,3 +109,8 @@ validarEntrada input =
 posicaoDisponivel :: Coord -> Tabuleiro -> Bool
 posicaoDisponivel (linha, coluna) tabuleiro =
     tabuleiro !! linha !! coluna == vazio
+
+ganhouSeFizer :: Tabuleiro -> Char -> Coord -> Bool
+ganhouSeFizer tabuleiro jogador jogada =
+    let novoTabuleiro = fazJogada jogada tabuleiro jogador
+    in ganhou novoTabuleiro jogador
